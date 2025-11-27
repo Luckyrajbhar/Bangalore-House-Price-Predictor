@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangalore Home Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1 class="title">Bangalore Home Price Predictor</h1>
+                <p class="subtitle">Get instant price estimates for properties in Bangalore</p>
+            </div>
+
+            <form id="predictionForm" class="form">
+                <div class="form-group">
+                    <label for="uiSqft" class="label">Total Area (Square Feet)</label>
+                    <input 
+                        type="number" 
+                        id="uiSqft" 
+                        class="input" 
+                        placeholder="e.g., 1500" 
+                        value="1000" 
+                        min="100" 
+                        step="50"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="label">BHK</label>
+                    <div class="radio-group">
+                        <input type="radio" id="radio-bhk-1" name="uiBHK" value="1">
+                        <label for="radio-bhk-1" class="radio-label">1</label>
+                        <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked>
+                        <label for="radio-bhk-2" class="radio-label">2</label>
+                        <input type="radio" id="radio-bhk-3" name="uiBHK" value="3">
+                        <label for="radio-bhk-3" class="radio-label">3</label>
+                        <input type="radio" id="radio-bhk-4" name="uiBHK" value="4">
+                        <label for="radio-bhk-4" class="radio-label">4</label>
+                        <input type="radio" id="radio-bhk-5" name="uiBHK" value="5">
+                        <label for="radio-bhk-5" class="radio-label">5</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Bathrooms</label>
+                    <div class="radio-group">
+                        <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1">
+                        <label for="radio-bath-1" class="radio-label">1</label>
+                        <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked>
+                        <label for="radio-bath-2" class="radio-label">2</label>
+                        <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3">
+                        <label for="radio-bath-3" class="radio-label">3</label>
+                        <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4">
+                        <label for="radio-bath-4" class="radio-label">4</label>
+                        <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5">
+                        <label for="radio-bath-5" class="radio-label">5</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="uiLocations" class="label">Location</label>
+                    <select id="uiLocations" class="select" required>
+                        <option value="" disabled selected>Select a location</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary" id="estimateBtn">
+                    <span class="btn-text">Estimate Price</span>
+                    <span class="btn-loader" style="display: none;">⏳</span>
+                </button>
+            </form>
+
+            <div id="uiEstimatedPrice" class="result-container" style="display: none;">
+                <div class="result-card">
+                    <div class="result-label">Estimated Price</div>
+                    <div class="result-value" id="resultValue"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
