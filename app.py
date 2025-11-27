@@ -18,13 +18,9 @@ spec = importlib.util.spec_from_file_location("server_module", server_path)
 server = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(server)
 
-# Import util and load artifacts (this must happen after changing directory)
-import util
-util.load_saved_artifacts()
-
-# Get the Flask app instance
+# Get the Flask app instance (artifacts are loaded in server.py)
 app = server.app
 
-# Export for Vercel
+# Export for Render/gunicorn
 __all__ = ['app']
 

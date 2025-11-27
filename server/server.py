@@ -20,6 +20,9 @@ app = Flask(__name__,
             template_folder=template_dir,
             static_folder=static_dir)
 
+# Load artifacts when module is imported (for production deployment)
+util.load_saved_artifacts()
+
 @app.route('/')
 def home():
     try:
